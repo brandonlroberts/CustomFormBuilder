@@ -160,28 +160,30 @@ namespace TestingFormsDotNet_3_1.Data
 
             List<FormControl> controls = new List<FormControl>
         {
-            // Person
-            new FormControl { Data = "", FormName = "First Name", FormSectionId = 1, FormDataTypeId = 1, IsVisible = true, Order = 0, CssClass = "", IsActive = true },
-            new FormControl { Data = "", FormName = "Last Name",  FormSectionId = 1, FormDataTypeId = 1, IsVisible = true, Order = 1, CssClass = "", IsActive = true },
-            new FormControl { Data = "", FormName = "DOB",        FormSectionId = 1, FormDataTypeId = 5, IsVisible = true, Order = 2, CssClass = "", IsActive = true },
-            new FormControl { Data = "", FormName = "Weight",     FormSectionId = 1, FormDataTypeId = 3, IsVisible = true, Order = 3, CssClass = "", IsActive = true },
-            new FormControl { Data = "", FormName = "Height",     FormSectionId = 1, FormDataTypeId = 2, IsVisible = true, Order = 4, CssClass = "", IsActive = true },
 
             // Address
-            new FormControl { Data = "",  FormName = "Address 1",  FormSectionId = 2, FormDataTypeId = 1, IsVisible = true, Order = 0, CssClass = "", IsActive = true },
-            new FormControl { Data = "",  FormName = "Address 2",  FormSectionId = 2, FormDataTypeId = 1, IsVisible = true, Order = 1, CssClass = "", IsActive = true },
-            new FormControl { Data = "",  FormName = "Address 3",  FormSectionId = 2, FormDataTypeId = 1, IsVisible = true, Order = 2, CssClass = "", IsActive = true },
-            new FormControl { Data = "",  FormName = "City",       FormSectionId = 2, FormDataTypeId = 1, IsVisible = true, Order = 3, CssClass = "", IsActive = true },
+            new FormControl { Data = "",  FormName = "Zip",        FormSectionId = 2, FormDataTypeId = 1, IsVisible = true, Order = 5, CssClass = "", IsActive = true },
             new FormControl { Data = "",  FormName = "State",      FormSectionId = 2, FormDataTypeId = 2, IsVisible = true, Order = 4, CssClass = "", IsActive = true },
-            new FormControl { Data = "",  FormName = "Zip",        FormSectionId = 2, FormDataTypeId = 1, IsVisible = true, Order = 4, CssClass = "", IsActive = true },
+            new FormControl { Data = "",  FormName = "City",       FormSectionId = 2, FormDataTypeId = 1, IsVisible = true, Order = 3, CssClass = "", IsActive = true },
+            new FormControl { Data = "",  FormName = "Address 3",  FormSectionId = 2, FormDataTypeId = 1, IsVisible = true, Order = 2, CssClass = "", IsActive = true },
+            new FormControl { Data = "",  FormName = "Address 2",  FormSectionId = 2, FormDataTypeId = 1, IsVisible = true, Order = 1, CssClass = "", IsActive = true },
+            new FormControl { Data = "",  FormName = "Address 1",  FormSectionId = 2, FormDataTypeId = 1, IsVisible = true, Order = 0, CssClass = "", IsActive = true },
+
+            // Person
+            new FormControl { Data = "", FormName = "Height",     FormSectionId = 1, FormDataTypeId = 2, IsVisible = true, Order = 4, CssClass = "", IsActive = true },
+            new FormControl { Data = "", FormName = "Weight",     FormSectionId = 1, FormDataTypeId = 3, IsVisible = true, Order = 3, CssClass = "", IsActive = true },
+            new FormControl { Data = "", FormName = "DOB",        FormSectionId = 1, FormDataTypeId = 5, IsVisible = true, Order = 2, CssClass = "", IsActive = true },
+            new FormControl { Data = "", FormName = "Last Name",  FormSectionId = 1, FormDataTypeId = 1, IsVisible = true, Order = 1, CssClass = "", IsActive = true },
+            new FormControl { Data = "", FormName = "First Name", FormSectionId = 1, FormDataTypeId = 1, IsVisible = true, Order = 0, CssClass = "", IsActive = true },
+
         };
             context.FormControls.AddRange(controls);
             context.SaveChanges();
 
             List<Form> forms = new List<Form>
         {
-            new Form 
-            { 
+            new Form
+            {
                 Name = "Roberts Death Cert",
             },
         };
@@ -190,17 +192,17 @@ namespace TestingFormsDotNet_3_1.Data
 
             List<FormControlForm> formControlForms = new List<FormControlForm>
         {
-            new FormControlForm { FormId = 1, FormControlId = 1 , IsActive = true},
-            new FormControlForm { FormId = 1, FormControlId = 2 , IsActive = true},
-            new FormControlForm { FormId = 1, FormControlId = 3 , IsActive = true},
-            new FormControlForm { FormId = 1, FormControlId = 4 , IsActive = true},
-            new FormControlForm { FormId = 1, FormControlId = 5 , IsActive = true},
-            new FormControlForm { FormId = 1, FormControlId = 6 , IsActive = true},
-            new FormControlForm { FormId = 1, FormControlId = 7 , IsActive = true},
-            new FormControlForm { FormId = 1, FormControlId = 8 , IsActive = true},
-            new FormControlForm { FormId = 1, FormControlId = 9 , IsActive = true},
-            new FormControlForm { FormId = 1, FormControlId = 10, IsActive = true},
-            new FormControlForm { FormId = 1, FormControlId = 11, IsActive = true},
+            new FormControlForm { FormId = 1, FormControlId = 1 , IsActive = true, Order = 0},
+            new FormControlForm { FormId = 1, FormControlId = 2 , IsActive = true, Order = 1},
+            new FormControlForm { FormId = 1, FormControlId = 3 , IsActive = true, Order = 2},
+            new FormControlForm { FormId = 1, FormControlId = 4 , IsActive = true, Order = 3},
+            new FormControlForm { FormId = 1, FormControlId = 5 , IsActive = true, Order = 4},
+            new FormControlForm { FormId = 1, FormControlId = 6 , IsActive = true, Order = 0},
+            new FormControlForm { FormId = 1, FormControlId = 7 , IsActive = true, Order = 1},
+            new FormControlForm { FormId = 1, FormControlId = 8 , IsActive = true, Order = 2},
+            new FormControlForm { FormId = 1, FormControlId = 9 , IsActive = true, Order = 3},
+            new FormControlForm { FormId = 1, FormControlId = 10, IsActive = true, Order = 4},
+            new FormControlForm { FormId = 1, FormControlId = 11, IsActive = true, Order = 5},
         };
             context.FormControlForms.AddRange(formControlForms);
             context.SaveChanges();

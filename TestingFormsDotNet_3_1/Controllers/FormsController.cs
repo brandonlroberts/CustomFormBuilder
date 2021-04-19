@@ -38,7 +38,7 @@ namespace TestingFormsDotNet_3_1.Controllers
                 .Include(x => x.FormControlNavigation)
                 .Include(x => x.FormNavigation)
                 .Where(x => x.FormId == id.Value)
-                .OrderBy(x => x.FormControlNavigation.Order)
+                .OrderBy(x => x.Order)
                 .ToList();
             if (form == null)
             {
@@ -82,9 +82,10 @@ namespace TestingFormsDotNet_3_1.Controllers
                         FormSectionId = item.FormSectionId,
                         FormName = item.FormName,
                         IsActive = item.IsActive,
-                        FormDataTypeId = item.FormDataTypeId
+                        FormDataTypeId = item.FormDataTypeId,
                     },
-                    IsActive = item.IsActive
+                    IsActive = item.IsActive,
+                    FormOrder = item.Order
                 });
             }
 
@@ -112,7 +113,8 @@ namespace TestingFormsDotNet_3_1.Controllers
                     {
                         FormId = newForm.Id,
                         FormControlId = form.FormControlForms[i].FormControlNavigation.ControlId,
-                        IsActive = form.FormControlForms[i].IsActive
+                        IsActive = form.FormControlForms[i].IsActive,
+                        Order = form.FormControlForms[i].FormOrder
                     });
                 }
 
@@ -157,7 +159,8 @@ namespace TestingFormsDotNet_3_1.Controllers
                         IsActive = item.FormControlNavigation.IsActive,
                         FormDataTypeId = item.FormControlNavigation.FormDataTypeId
                     },
-                    IsActive = item.IsActive
+                    IsActive = item.IsActive,
+                    FormOrder = item.Order
                 });
             }
 
@@ -189,6 +192,7 @@ namespace TestingFormsDotNet_3_1.Controllers
                     for (int i = 0; i < formControlForms.Count(); i++)
                     {
                         formControlForms[i].IsActive = form.FormControlForms[i].IsActive;
+                        formControlForms[i].Order = form.FormControlForms[i].FormOrder;
                     }
 
                     _context.FormControlForms.UpdateRange(formControlForms);

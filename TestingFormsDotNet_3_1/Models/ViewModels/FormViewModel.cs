@@ -16,6 +16,7 @@ namespace TestingFormsDotNet_3_1.Models.ViewModels
     public class FormControlFormViewModel
     {
         public bool IsActive { get; set; }
+        public int? FormOrder { get; set; }
         public FormControlNavigationViewModel FormControlNavigation { get; set; }
     }
 
