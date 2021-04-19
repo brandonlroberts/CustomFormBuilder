@@ -1,0 +1,124 @@
+﻿@model TestingFormsDotNet_3_1.Models.ViewModels.FormViewModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<hr />
+<div class="row justify-content-md-center">
+    <div class="col-8">
+        <form>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="container-fluid" style=" padding: 10px; margin: 10px; width: 100%">
+                <h3><em>@Model.Name</em></h3>
+            </div>
+
+            @if (Model.FormControlForms.Any(x => x.FormControlNavigation.FormSectionId == 1))
+            {
+                <div class="container-fluid" style="border-style: solid; border-color: gray; border-radius: 5px; padding: 10px; margin: 10px; width: 100%">
+                    <h3>Personal Data</h3>
+                    <div style="padding: 20px">
+                        @for (int i = 0; i < Model.FormControlForms.Count; i++)
+                        {
+                            if (Model.FormControlForms[i].FormControlNavigation.FormSectionId == 1 && Model.FormControlForms[i].IsActive == true)
+                            {
+                                <div class="form-group">
+                                    <label class="control-label">@Model.FormControlForms[i].FormControlNavigation.FormName</label>
+                                    @if (Model.FormControlForms[i].FormControlNavigation.FormDataTypeId == 1)
+                                    {
+                                        <div class="container-fluid row">
+                                            <div class="col"><input type="text" asp-for="@Model.FormControlForms[i].FormControlNavigation.Data" class="form-control" /></div>
+                                        </div>
+                                    }
+                                    else if (@Model.FormControlForms[i].FormControlNavigation.FormDataTypeId == 2)
+                                    {
+                                        <div class="container-fluid row">
+                                            <div class="col"><input type="number" asp-for="@Model.FormControlForms[i].FormControlNavigation.Data" class="form-control" /></div>
+                                        </div> }
+                                    else if (Model.FormControlForms[i].FormControlNavigation.FormDataTypeId == 3)
+                                    {
+                                        <div class="container-fluid row">
+                                            <div class="col"><input type="number" asp-for="@Model.FormControlForms[i].FormControlNavigation.Data" class="form-control" /></div>
+                                        </div> }
+                                    else if (Model.FormControlForms[i].FormControlNavigation.FormDataTypeId == 4)
+                                    {
+                                        <div class="container-fluid row">
+                                            <div class="col"><input type="checkbox" asp-for="@Model.FormControlForms[i].FormControlNavigation.Data" class="form-control" /></div>
+                                        </div> }
+                                    else if (Model.FormControlForms[i].FormControlNavigation.FormDataTypeId == 5)
+                                    {
+                                        <div class="container-fluid row">
+                                            <div class="col"><input type="date" asp-for="@Model.FormControlForms[i].FormControlNavigation.Data" class="form-control" /></div>
+                                        </div>}
+                                </div>
+                            }
+                        }
+                    </div>
+                </div>
+            }
+            @if (Model.FormControlForms.Any(x => x.FormControlNavigation.FormSectionId == 2))
+            {
+                <div class="container-fluid" style="border-style: solid; border-color: gray; border-radius: 5px; padding: 10px; margin: 10px; width: 100%">
+                    <h3>Addresses</h3>
+                    <div style="padding: 20px">
+                        @for (int i = 0; i < Model.FormControlForms.Count; i++)
+                        {
+                            if (Model.FormControlForms[i].FormControlNavigation.FormSectionId == 2 && Model.FormControlForms[i].IsActive == true)
+                            {
+                                <div class="form-group">
+                                    <label class="control-label">@Model.FormControlForms[i].FormControlNavigation.FormName</label>
+                                    @if (Model.FormControlForms[i].FormControlNavigation.FormDataTypeId == 1)
+                                    {
+                                        <div class="container-fluid row">
+                                            <div class="col"><input type="text" asp-for="@Model.FormControlForms[i].FormControlNavigation.Data" class="form-control" /></div>
+                                        </div>
+                                    }
+                                    else if (@Model.FormControlForms[i].FormControlNavigation.FormDataTypeId == 2)
+                                    {
+                                        <div class="container-fluid row">
+                                            <div class="col"><input type="number" asp-for="@Model.FormControlForms[i].FormControlNavigation.Data" class="form-control" /></div>
+                                        </div> }
+                                    else if (Model.FormControlForms[i].FormControlNavigation.FormDataTypeId == 3)
+                                    {
+                                        <div class="container-fluid row">
+                                            <div class="col"><input type="number" asp-for="@Model.FormControlForms[i].FormControlNavigation.Data" class="form-control" /></div>
+                                        </div> }
+                                    else if (Model.FormControlForms[i].FormControlNavigation.FormDataTypeId == 4)
+                                    {
+                                        <div class="container-fluid row">
+                                            <div class="col"><input type="checkbox" asp-for="@Model.FormControlForms[i].FormControlNavigation.Data" class="form-control" /></div>
+                                        </div> }
+                                    else if (Model.FormControlForms[i].FormControlNavigation.FormDataTypeId == 5)
+                                    {
+                                        <div class="container-fluid row">
+                                            <div class="col"><input type="date" asp-for="@Model.FormControlForms[i].FormControlNavigation.Data" class="form-control" /></div>
+                                        </div>}
+                                </div>
+                            }
+                        }
+
+                    </div>
+                </div>
+            }
+            @if (Model.FormControlForms.Any(x => x.FormControlNavigation.FormSectionId == 3))
+            {
+
+            }
+            @if (Model.FormControlForms.Any(x => x.FormControlNavigation.FormSectionId == 4))
+            {
+
+            }
+            <div class="container-fluid" style="padding: 10px; margin: 10px; width: 100%">
+                <div class="form-group">
+                    <a asp-action="Index">Back to List</a>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

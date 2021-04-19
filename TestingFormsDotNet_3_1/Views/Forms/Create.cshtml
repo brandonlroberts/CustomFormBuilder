@@ -1,0 +1,223 @@
+﻿@model TestingFormsDotNet_3_1.Models.ViewModels.FormViewModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<hr />
+<div class="row justify-content-md-center">
+    <div class="col-8">
+        <form asp-action="Create" class="needs-validation" novalidate>
+            <div class="container-fluid" style="padding: 10px; margin: 10px; width: 100%">
+                <div class="form-group">
+                    <label class="control-label">Form Name</label>
+                    <input type="text" required asp-for="@Model.Name" class="form-control" />
+                    <div class="invalid-feedback"> Please choose a form name. </div>
+                    <div class="valid-feedback"> Looks good! </div>
+                </div>
+            </div>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @if (Model.FormControlForms.Any(x => x.FormControlNavigation.FormSectionId == 1))
+            {
+                <div class="container-fluid" style="border-style: solid; border-color: gray; border-radius: 5px; padding: 10px; margin: 10px; width: 100%">
+                    <h3>Personal Data</h3>
+                    <div style="padding: 20px">
+                        @for (int i = 0; i < Model.FormControlForms.Count; i++)
+                        {
+                            <input type="hidden" asp-for="FormControlForms[i].FormControlNavigation.ControlId" />
+                            if (Model.FormControlForms[i].FormControlNavigation.FormSectionId == 1)
+                            {
+                                <div class="form-group">
+                                    @if (Model.FormControlForms[i].FormControlNavigation.FormDataTypeId == 1)
+                                    {
+                                        <div class="container-fluid row">
+                                            <div class="input-group mb-3">
+                                                <div class="input-group-prepend">
+                                                    <div class="input-group-text">
+                                                        <input type="checkbox" asp-for="@Model.FormControlForms[i].IsActive" aria-label="Checkbox for following text input">
+                                                    </div>
+                                                </div>
+                                                <input disabled value="@Model.FormControlForms[i].FormControlNavigation.FormName" type="text" readonly class="form-control" aria-label="Text input with checkbox">
+                                            </div>
+                                        </div>
+                                    }
+                                    else if (@Model.FormControlForms[i].FormControlNavigation.FormDataTypeId == 2)
+                                    {
+                                        <div class="container-fluid row">
+                                            <div class="input-group mb-3">
+                                                <div class="input-group-prepend">
+                                                    <div class="input-group-text">
+                                                        <input type="checkbox" asp-for="@Model.FormControlForms[i].IsActive" aria-label="Checkbox for following text input">
+                                                    </div>
+                                                </div>
+                                                <input disabled value="@Model.FormControlForms[i].FormControlNavigation.FormName" type="text" readonly class="form-control" aria-label="Text input with checkbox">
+                                            </div>
+                                        </div>
+                                    }
+                                    else if (Model.FormControlForms[i].FormControlNavigation.FormDataTypeId == 3)
+                                    {
+                                        <div class="container-fluid row">
+                                            <div class="input-group mb-3">
+                                                <div class="input-group-prepend">
+                                                    <div class="input-group-text">
+                                                        <input type="checkbox" asp-for="@Model.FormControlForms[i].IsActive" aria-label="Checkbox for following text input">
+                                                    </div>
+                                                </div>
+                                                <input disabled value="@Model.FormControlForms[i].FormControlNavigation.FormName" type="text" readonly class="form-control" aria-label="Text input with checkbox">
+                                            </div>
+                                        </div> }
+                                    else if (Model.FormControlForms[i].FormControlNavigation.FormDataTypeId == 4)
+                                    {
+                                        <div class="container-fluid row">
+                                            <div class="input-group mb-3">
+                                                <div class="input-group-prepend">
+                                                    <div class="input-group-text">
+                                                        <input type="checkbox" asp-for="@Model.FormControlForms[i].IsActive" aria-label="Checkbox for following text input">
+                                                    </div>
+                                                </div>
+                                                <input disabled value="@Model.FormControlForms[i].FormControlNavigation.FormName" type="text" readonly class="form-control" aria-label="Text input with checkbox">
+                                            </div>
+                                        </div> }
+                                    else if (Model.FormControlForms[i].FormControlNavigation.FormDataTypeId == 5)
+                                    {
+                                        <div class="container-fluid row">
+                                            <div class="input-group mb-3">
+                                                <div class="input-group-prepend">
+                                                    <div class="input-group-text">
+                                                        <input type="checkbox" asp-for="@Model.FormControlForms[i].IsActive" aria-label="Checkbox for following text input">
+                                                    </div>
+                                                </div>
+                                                <input disabled value="@Model.FormControlForms[i].FormControlNavigation.FormName" type="text" readonly class="form-control" aria-label="Text input with checkbox">
+                                            </div>
+                                        </div>}
+                                </div>
+                            }
+                        }
+                    </div>
+                </div>
+            }
+            @if (Model.FormControlForms.Any(x => x.FormControlNavigation.FormSectionId == 2))
+            {
+                <div class="container-fluid" style="border-style: solid; border-color: gray; border-radius: 5px; padding: 10px; margin: 10px; width: 100%">
+                    <h3>Addresses</h3>
+                    <div style="padding: 20px">
+                        @for (int i = 0; i < Model.FormControlForms.Count; i++)
+                        {
+                            if (Model.FormControlForms[i].FormControlNavigation.FormSectionId == 2)
+                            {
+                                <div class="form-group">
+                                    @if (Model.FormControlForms[i].FormControlNavigation.FormDataTypeId == 1)
+                                    {
+                                        <div class="container-fluid row">
+                                            <div class="input-group mb-3">
+                                                <div class="input-group-prepend">
+                                                    <div class="input-group-text">
+                                                        <input type="checkbox" asp-for="@Model.FormControlForms[i].IsActive" aria-label="Checkbox for following text input">
+                                                    </div>
+                                                </div>
+                                                <input disabled value="@Model.FormControlForms[i].FormControlNavigation.FormName" type="text" readonly class="form-control" aria-label="Text input with checkbox">
+                                            </div>
+                                        </div>
+                                    }
+                                    else if (@Model.FormControlForms[i].FormControlNavigation.FormDataTypeId == 2)
+                                    {
+                                        <div class="container-fluid row">
+                                            <div class="input-group mb-3">
+                                                <div class="input-group-prepend">
+                                                    <div class="input-group-text">
+                                                        <input type="checkbox" asp-for="@Model.FormControlForms[i].IsActive" aria-label="Checkbox for following text input">
+                                                    </div>
+                                                </div>
+                                                <input disabled value="@Model.FormControlForms[i].FormControlNavigation.FormName" type="text" readonly class="form-control" aria-label="Text input with checkbox">
+                                            </div>
+                                        </div>
+                                    }
+                                    else if (Model.FormControlForms[i].FormControlNavigation.FormDataTypeId == 3)
+                                    {
+                                        <div class="container-fluid row">
+                                            <div class="input-group mb-3">
+                                                <div class="input-group-prepend">
+                                                    <div class="input-group-text">
+                                                        <input type="checkbox" asp-for="@Model.FormControlForms[i].IsActive" aria-label="Checkbox for following text input">
+                                                    </div>
+                                                </div>
+                                                <input disabled value="@Model.FormControlForms[i].FormControlNavigation.FormName" type="text" readonly class="form-control" aria-label="Text input with checkbox">
+                                            </div>
+                                        </div>
+                                    }
+                                    else if (Model.FormControlForms[i].FormControlNavigation.FormDataTypeId == 4)
+                                    {
+                                        <div class="container-fluid row">
+                                            <div class="input-group mb-3">
+                                                <div class="input-group-prepend">
+                                                    <div class="input-group-text">
+                                                        <input type="checkbox" asp-for="@Model.FormControlForms[i].IsActive" aria-label="Checkbox for following text input">
+                                                    </div>
+                                                </div>
+                                                <input disabled value="@Model.FormControlForms[i].FormControlNavigation.FormName" type="text" readonly class="form-control" aria-label="Text input with checkbox">
+                                            </div>
+                                        </div>
+                                    }
+                                    else if (Model.FormControlForms[i].FormControlNavigation.FormDataTypeId == 5)
+                                    {
+                                        <div class="container-fluid row">
+                                            <div class="input-group mb-3">
+                                                <div class="input-group-prepend">
+                                                    <div class="input-group-text">
+                                                        <input type="checkbox" asp-for="@Model.FormControlForms[i].IsActive" aria-label="Checkbox for following text input">
+                                                    </div>
+                                                </div>
+                                                <input disabled value="@Model.FormControlForms[i].FormControlNavigation.FormName" type="text" readonly class="form-control" aria-label="Text input with checkbox">
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            }
+                        }
+
+                    </div>
+                </div>
+            }
+            @if (Model.FormControlForms.Any(x => x.FormControlNavigation.FormSectionId == 3))
+            {
+
+            }
+            @if (Model.FormControlForms.Any(x => x.FormControlNavigation.FormSectionId == 4))
+            {
+
+            }
+            <div class="container-fluid" style="padding: 10px; margin: 10px; width: 100%">
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                    <a asp-action="Index">Back to List</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script>
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (function () {
+            'use strict';
+            window.addEventListener('load', function () {
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                var forms = document.getElementsByClassName('needs-validation');
+                // Loop over them and prevent submission
+                var validation = Array.prototype.filter.call(forms, function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+    </script>
+}
