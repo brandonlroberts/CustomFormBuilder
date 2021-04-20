@@ -21,9 +21,7 @@ namespace TestingFormsDotNet_3_1.Data
             List<FormSection> sections = new List<FormSection>
             {
                 new FormSection { Id = 1, Name = "Person" },
-                new FormSection { Id = 2, Name = "Address" },
-                new FormSection { Id = 3, Name = "Telephone" },
-                new FormSection { Id = 4, Name = "Email" }
+                new FormSection { Id = 2, Name = "Address" }
             };
             context.FormSections.AddRange(sections);
             context.SaveChanges();
@@ -205,6 +203,14 @@ namespace TestingFormsDotNet_3_1.Data
             new FormControlForm { FormId = 1, FormControlId = 11, IsActive = true, Order = 5},
         };
             context.FormControlForms.AddRange(formControlForms);
+            context.SaveChanges();
+
+            List<FormSectionForm> formSectionForms = new List<FormSectionForm>
+        {
+            new FormSectionForm { FormId = 1, FormSectionId = 1 , IsActive = true, Order = 0},
+            new FormSectionForm { FormId = 1, FormSectionId = 2 , IsActive = true, Order = 1},
+        };
+            context.FormSectionForms.AddRange(formSectionForms);
             context.SaveChanges();
         }
     }

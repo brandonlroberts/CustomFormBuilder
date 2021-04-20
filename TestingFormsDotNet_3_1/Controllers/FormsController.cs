@@ -5,7 +5,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using TestingFormsDotNet_3_1.Data.Entities;
 using TestingFormsDotNet_3_1.Models.Entities;
-using TestingFormsDotNet_3_1.Models.ViewModels;
 
 namespace TestingFormsDotNet_3_1.Controllers
 {
@@ -32,7 +31,7 @@ namespace TestingFormsDotNet_3_1.Controllers
                 return NotFound();
             }
 
-            var vm = new FormViewModel() { FormControlForms = new List<FormControlFormViewModel>() };
+            var vm = new Form() { FormControlForms = new List<FormControlForm>() };
             var form = await _context.Forms.FindAsync(id);
             form.FormControlForms = _context.FormControlForms
                 .Include(x => x.FormControlNavigation)
@@ -49,9 +48,9 @@ namespace TestingFormsDotNet_3_1.Controllers
             vm.Rowversion = form.Rowversion;
             foreach (var item in form.FormControlForms)
             {
-                vm.FormControlForms.Add(new FormControlFormViewModel()
+                vm.FormControlForms.Add(new FormControlForm()
                 {
-                    FormControlNavigation = new FormControlNavigationViewModel()
+                    FormControlNavigation = new FormControl()
                     {
                         FormSectionId = item.FormControlNavigation.FormSectionId,
                         FormName = item.FormControlNavigation.FormName,
@@ -69,23 +68,23 @@ namespace TestingFormsDotNet_3_1.Controllers
         public IActionResult Create()
         {
             var formControls = _context.FormControls.OrderBy(x => x.Order);
-            var vm = new FormViewModel();
-            vm.FormControlForms = new List<FormControlFormViewModel>();
+            var vm = new Form();
+            vm.FormControlForms = new List<FormControlForm>();
 
             foreach (var item in formControls)
             {
-                vm.FormControlForms.Add(new FormControlFormViewModel()
+                vm.FormControlForms.Add(new FormControlForm()
                 {
-                    FormControlNavigation = new FormControlNavigationViewModel()
+                    FormControlNavigation = new FormControl()
                     {
-                        ControlId = item.Id,
+                        Id = item.Id,
                         FormSectionId = item.FormSectionId,
                         FormName = item.FormName,
                         IsActive = item.IsActive,
                         FormDataTypeId = item.FormDataTypeId,
                     },
                     IsActive = item.IsActive,
-                    FormOrder = item.Order
+                    Order = item.Order
                 });
             }
 
@@ -97,7 +96,7 @@ namespace TestingFormsDotNet_3_1.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([FromForm] FormViewModel form)
+        public async Task<IActionResult> Create([FromForm] Form form)
         {
             if (ModelState.IsValid)
             {
@@ -112,9 +111,9 @@ namespace TestingFormsDotNet_3_1.Controllers
                     formControlForms.Add(new FormControlForm()
                     {
                         FormId = newForm.Id,
-                        FormControlId = form.FormControlForms[i].FormControlNavigation.ControlId,
+                        FormControlId = form.FormControlForms[i].FormControlNavigation.Id,
                         IsActive = form.FormControlForms[i].IsActive,
-                        Order = form.FormControlForms[i].FormOrder
+                        Order = form.FormControlForms[i].Order
                     });
                 }
 
@@ -133,7 +132,7 @@ namespace TestingFormsDotNet_3_1.Controllers
                 return NotFound();
             }
 
-            var vm = new FormViewModel() { FormControlForms = new List<FormControlFormViewModel>() };
+            var vm = new Form() { FormControlForms = new List<FormControlForm>() };
             var form = await _context.Forms.FindAsync(id);
             form.FormControlForms = _context.FormControlForms
                 .Include(x => x.FormControlNavigation)
@@ -150,9 +149,9 @@ namespace TestingFormsDotNet_3_1.Controllers
             vm.Rowversion = form.Rowversion;
             foreach (var item in form.FormControlForms)
             {
-                vm.FormControlForms.Add(new FormControlFormViewModel()
+                vm.FormControlForms.Add(new FormControlForm()
                 {
-                    FormControlNavigation = new FormControlNavigationViewModel()
+                    FormControlNavigation = new FormControl()
                     {
                         FormSectionId = item.FormControlNavigation.FormSectionId,
                         FormName = item.FormControlNavigation.FormName,
@@ -160,9 +159,40 @@ namespace TestingFormsDotNet_3_1.Controllers
                         FormDataTypeId = item.FormControlNavigation.FormDataTypeId
                     },
                     IsActive = item.IsActive,
-                    FormOrder = item.Order
+                    Order = item.Order
                 });
             }
+
+            //var vm = new FormViewModel() { FormControlForms = new List<FormControlFormViewModel>() };
+            //var form = await _context.Forms.FindAsync(id);
+            //form.FormControlForms = _context.FormControlForms
+            //    .Include(x => x.FormControlNavigation)
+            //    .Include(x => x.FormNavigation)
+            //    .Where(x => x.FormId == id.Value)
+            //    .OrderBy(x => x.FormControlNavigation.Order)
+            //    .ToList();
+            //if (form == null)
+            //{
+            //    return NotFound();
+            //}
+            //vm.Name = form.Name;
+            //vm.Id = form.Id;
+            //vm.Rowversion = form.Rowversion;
+            //foreach (var item in form.FormControlForms)
+            //{
+            //    vm.FormControlForms.Add(new FormControlFormViewModel()
+            //    {
+            //        FormControlNavigation = new FormControlNavigationViewModel()
+            //        {
+            //            FormSectionId = item.FormControlNavigation.FormSectionId,
+            //            FormName = item.FormControlNavigation.FormName,
+            //            IsActive = item.FormControlNavigation.IsActive,
+            //            FormDataTypeId = item.FormControlNavigation.FormDataTypeId
+            //        },
+            //        IsActive = item.IsActive,
+            //        FormOrder = item.Order
+            //    });
+            //}
 
             return View(vm);
         }
@@ -172,7 +202,7 @@ namespace TestingFormsDotNet_3_1.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [FromForm] FormViewModel form)
+        public async Task<IActionResult> Edit(int id, [FromForm] Form form)
         {
             if (id != form.Id)
             {
@@ -192,7 +222,7 @@ namespace TestingFormsDotNet_3_1.Controllers
                     for (int i = 0; i < formControlForms.Count(); i++)
                     {
                         formControlForms[i].IsActive = form.FormControlForms[i].IsActive;
-                        formControlForms[i].Order = form.FormControlForms[i].FormOrder;
+                        formControlForms[i].Order = form.FormControlForms[i].Order;
                     }
 
                     _context.FormControlForms.UpdateRange(formControlForms);
@@ -209,7 +239,7 @@ namespace TestingFormsDotNet_3_1.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Index));                
             }
             return View(form);
         }
