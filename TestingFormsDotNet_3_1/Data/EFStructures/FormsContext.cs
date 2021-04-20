@@ -11,7 +11,6 @@ namespace TestingFormsDotNet_3_1.Data.Entities
 
         public DbSet<Form> Forms { get; set; }
         public DbSet<FormControlForm> FormControlForms { get; set; }
-        public DbSet<FormSectionForm> FormSectionForms { get; set; }
         public DbSet<Address> Addresses { get; set; }
         public DbSet<Person> People { get; set; }
         public DbSet<State> States { get; set; }
@@ -25,7 +24,6 @@ namespace TestingFormsDotNet_3_1.Data.Entities
         {
             modelBuilder.Entity<Form>().ToTable("Forms");
             modelBuilder.Entity<FormControlForm>().ToTable("FormControlForms");
-            modelBuilder.Entity<FormSectionForm>().ToTable("FormSectionForms");
             modelBuilder.Entity<Person>().ToTable("Person");
             modelBuilder.Entity<State>().ToTable("States");
             modelBuilder.Entity<Address>().ToTable("Addresses");

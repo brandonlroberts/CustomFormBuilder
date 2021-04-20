@@ -1,4 +1,4 @@
-﻿@model TestingFormsDotNet_3_1.Models.Entities.Form
+﻿@model TestingFormsDotNet_3_1.Models.ViewModels.FormViewModel
 
 @{
     ViewData["Title"] = "Edit";
@@ -6,7 +6,7 @@
 
 <hr />
 <div class="row justify-content-md-center">
-    <div class="col-10">
+    <div class="col-8">
         <form asp-action="Edit">
             <div class="container-fluid" style="padding: 10px; margin: 10px; width: 100%">
                 <div class="form-group">
@@ -35,7 +35,7 @@
                                                     </div>
                                                 </div>
                                                 <input style="width: 80%" disabled value="@Model.FormControlForms[i].FormControlNavigation.FormName" type="text" readonly class="form-control" aria-label="Text input with checkbox">
-                                                <input asp-for="@Model.FormControlForms[i].Order" type="number" class="form-control">
+                                                <input asp-for="@Model.FormControlForms[i].FormOrder" type="number" class="form-control">
                                             </div>
                                         </div>
                                     }
@@ -49,7 +49,7 @@
                                                     </div>
                                                 </div>
                                                 <input style="width: 80%" disabled value="@Model.FormControlForms[i].FormControlNavigation.FormName" type="text" readonly class="form-control" aria-label="Text input with checkbox">
-                                                <input asp-for="@Model.FormControlForms[i].Order" type="number" class="form-control">
+                                                <input asp-for="@Model.FormControlForms[i].FormOrder" type="number" class="form-control">
                                             </div>
                                         </div>
                                     }
@@ -63,7 +63,7 @@
                                                     </div>
                                                 </div>
                                                 <input style="width: 80%" disabled value="@Model.FormControlForms[i].FormControlNavigation.FormName" type="text" readonly class="form-control" aria-label="Text input with checkbox">
-                                                <input asp-for="@Model.FormControlForms[i].Order" type="number" class="form-control">
+                                                <input asp-for="@Model.FormControlForms[i].FormOrder" type="number" class="form-control">
                                             </div>
                                         </div> }
                                     else if (Model.FormControlForms[i].FormControlNavigation.FormDataTypeId == 4)
@@ -76,7 +76,7 @@
                                                     </div>
                                                 </div>
                                                 <input style="width: 80%" disabled value="@Model.FormControlForms[i].FormControlNavigation.FormName" type="text" readonly class="form-control" aria-label="Text input with checkbox">
-                                                <input asp-for="@Model.FormControlForms[i].Order" type="number" class="form-control">
+                                                <input asp-for="@Model.FormControlForms[i].FormOrder" type="number" class="form-control">
                                             </div>
                                         </div> }
                                     else if (Model.FormControlForms[i].FormControlNavigation.FormDataTypeId == 5)
@@ -89,7 +89,7 @@
                                                     </div>
                                                 </div>
                                                 <input style="width: 80%" disabled value="@Model.FormControlForms[i].FormControlNavigation.FormName" type="text" readonly class="form-control" aria-label="Text input with checkbox">
-                                                <input asp-for="@Model.FormControlForms[i].Order" type="number" class="form-control">
+                                                <input asp-for="@Model.FormControlForms[i].FormOrder" type="number" class="form-control">
                                             </div>
                                         </div>}
                                 </div>
@@ -118,7 +118,7 @@
                                                     </div>
                                                 </div>
                                                 <input style="width: 80%" disabled value="@Model.FormControlForms[i].FormControlNavigation.FormName" type="text" readonly class="form-control" aria-label="Text input with checkbox">
-                                                <input asp-for="@Model.FormControlForms[i].Order" type="number" class="form-control">
+                                                <input asp-for="@Model.FormControlForms[i].FormOrder" type="number" class="form-control">
                                             </div>
                                         </div>
                                     }
@@ -132,7 +132,7 @@
                                                     </div>
                                                 </div>
                                                 <input style="width: 80%" disabled value="@Model.FormControlForms[i].FormControlNavigation.FormName" type="text" readonly class="form-control" aria-label="Text input with checkbox">
-                                                <input asp-for="@Model.FormControlForms[i].Order" type="number" class="form-control">
+                                                <input asp-for="@Model.FormControlForms[i].FormOrder" type="number" class="form-control">
                                             </div>
                                         </div>
                                     }
@@ -146,7 +146,7 @@
                                                     </div>
                                                 </div>
                                                 <input style="width: 80%" disabled value="@Model.FormControlForms[i].FormControlNavigation.FormName" type="text" readonly class="form-control" aria-label="Text input with checkbox">
-                                                <input asp-for="@Model.FormControlForms[i].Order" type="number" class="form-control">
+                                                <input asp-for="@Model.FormControlForms[i].FormOrder" type="number" class="form-control">
                                             </div>
                                         </div>
                                     }
@@ -160,7 +160,7 @@
                                                     </div>
                                                 </div>
                                                 <input style="width: 80%" disabled value="@Model.FormControlForms[i].FormControlNavigation.FormName" type="text" readonly class="form-control" aria-label="Text input with checkbox">
-                                                <input asp-for="@Model.FormControlForms[i].Order" type="number" class="form-control">
+                                                <input asp-for="@Model.FormControlForms[i].FormOrder" type="number" class="form-control">
                                             </div>
                                         </div>
                                     }
@@ -174,7 +174,7 @@
                                                     </div>
                                                 </div>
                                                 <input style="width: 80%" disabled value="@Model.FormControlForms[i].FormControlNavigation.FormName" type="text" readonly class="form-control" aria-label="Text input with checkbox">
-                                                <input asp-for="@Model.FormControlForms[i].Order" type="number" class="form-control">
+                                                <input asp-for="@Model.FormControlForms[i].FormOrder" type="number" class="form-control">
                                             </div>
                                         </div>
                                     }
