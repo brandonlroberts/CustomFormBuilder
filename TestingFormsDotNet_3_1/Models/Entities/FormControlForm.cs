@@ -13,6 +13,7 @@ namespace TestingFormsDotNet_3_1.Models.Entities
         [ForeignKey(nameof(FormControlId))]
         public FormControl FormControlNavigation { get; set; }
 
+        public int? SectionId { get; set; }
         public int? Order { get; set; }
     }
 }
